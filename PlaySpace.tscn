@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Hand.gd" type="Script" id=2]
+[ext_resource path="res://PlaySpace.gd" type="Script" id=3]
+[ext_resource path="res://Deck.tscn" type="PackedScene" id=4]
+
+[node name="PlaySpace" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Hand" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Deck" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1759, 714 )
