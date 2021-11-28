@@ -17,8 +17,9 @@ func _process(delta):
 
 		if Input.is_action_just_released("click"):
 			link_card()
-		
-		
+		#Interpolate the card to the FieldSlot
+		if(connected_card!= null and connected_card.get_parent() == self):
+			connected_card.global_position = connected_card.global_position.linear_interpolate(self.position, 5 * delta) 
 #checks if cards are hovered
 
 func _on_FieldSlot_area_entered(area):
@@ -36,12 +37,13 @@ func _on_FieldSlot_area_exited(area):
 
 func link_card():	
 	#print("trump"+ String(card.trumpValue))
+
 		if(connected_card != null and hovered ==true):
+			var position_helper = connected_card.global_position#saves the position of the card
 			if(connected_card.get_parent().name == "Hand"):
 				connected_card.get_parent().remove_child(connected_card)
-				connected_card.position.x = 0
-				connected_card.position.y = 0
 			self.add_child(connected_card)	
+			connected_card.global_position = position_helper
 			
 
 		
