@@ -33,6 +33,7 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			newCard.position = self.position
 			var card_copy = cards_test.cards[randi()%cards_test.cards.size()]
 			newCard.get_node("BattleStat").text = String(card_copy.score)
+			newCard.trumpValue = card_copy.score
 			cards_test.cards.erase(card_copy)
 			self.get_parent().get_node("Hand").add_child(newCard)	
 				
